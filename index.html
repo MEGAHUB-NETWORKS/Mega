@@ -3,168 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infinity Hub | Play, Create, Level Up</title>
+    <title>CryptoCash - Earn Daily Rewards</title>
     
     <script src="https://pl28370848.effectivegatecpm.com/61/16/6f/61166f9730629bd7ee7d7ae6e111ba88.js"></script>
 
     <style>
-        :root { --neon: #39ff14; --primary: #6366f1; --bg: #030712; --card: #111827; }
-        body { background: var(--bg); color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; display: flex; }
+        :root { --gold: #f3ba2f; --green: #00ff88; --bg: #0b0e11; --card: #1e2329; }
+        body { background: var(--bg); color: white; font-family: 'Inter', sans-serif; margin: 0; padding: 0; }
         
-        /* AD GUTTERS (Side Banners) */
-        .ad-side { width: 160px; height: 100vh; background: #000; position: fixed; display: flex; align-items: center; justify-content: center; z-index: 100; }
-        .left-ad { left: 0; } .right-ad { right: 0; }
+        header { background: var(--card); padding: 15px; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .balance-chip { background: #2b3139; padding: 10px 20px; border-radius: 50px; border: 1px solid var(--gold); }
 
-        /* CONTENT AREA */
-        #main-wrapper { flex-grow: 1; margin: 0 160px; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        .container { max-width: 800px; margin: auto; padding: 20px; }
         
-        /* LEVEL BAR (Keeps users engaged) */
-        #user-stats { width: 100%; max-width: 800px; background: var(--card); padding: 15px; border-radius: 12px; border: 1px solid var(--primary); display: flex; justify-content: space-between; margin-bottom: 20px; }
-        .progress-bg { width: 200px; height: 10px; background: #374151; border-radius: 5px; margin-top: 5px; }
-        #progress-fill { width: 0%; height: 100%; background: var(--neon); border-radius: 5px; transition: 0.3s; }
-
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; width: 100%; max-width: 1000px; }
-        .box { background: var(--card); border-radius: 15px; padding: 25px; border: 1px solid #1f2937; position: relative; }
+        .ad-row { text-align: center; margin: 15px 0; }
         
-        /* CLICKER GAME */
-        .coin { width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle, #facc15, #b45309); border: 4px solid #78350f; cursor: pointer; font-size: 3em; margin: 20px 0; transition: 0.1s; }
-        .coin:active { transform: scale(0.9); }
+        .earn-card { background: var(--card); border-radius: 15px; padding: 25px; text-align: center; border: 1px solid #333; margin-bottom: 20px; }
+        .timer-bar { width: 100%; height: 6px; background: #333; border-radius: 3px; margin: 15px 0; overflow: hidden; }
+        #timer-fill { width: 0%; height: 100%; background: var(--green); transition: linear; }
 
-        /* DRAWING PAD */
-        #draw-pad { background: white; border-radius: 10px; cursor: crosshair; }
-
-        .smart-btn { background: var(--primary); color: white; border: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 15px; width: 100%; }
+        .withdraw-section { background: #181a20; padding: 20px; border-radius: 15px; border: 1px solid #444; }
+        input, select { width: 100%; padding: 12px; margin: 10px 0; background: #2b3139; border: 1px solid #444; color: white; border-radius: 8px; box-sizing: border-box; }
         
-        @media (max-width: 1200px) { .ad-side { display: none; } #main-wrapper { margin: 0; } }
+        .btn-gold { background: var(--gold); color: black; border: none; padding: 15px; border-radius: 8px; width: 100%; font-weight: bold; cursor: pointer; font-size: 1em; }
+        .btn-gold:hover { opacity: 0.9; }
+
+        .status-msg { font-size: 0.8em; color: #848e9c; margin-top: 10px; }
+        
+        /* AD SLOTS */
+        .sidebar-ads { position: fixed; top: 80px; width: 160px; height: 600px; }
+        .left-ad { left: 10px; } .right-ad { right: 10px; }
+        @media (max-width: 1100px) { .sidebar-ads { display: none; } }
     </style>
 </head>
 <body>
 
-    <div class="ad-side left-ad">
-        <script type="text/javascript">atOptions = {'key':'3786c373fb067d1092814cd741ef7d0d','format':'iframe','height':600,'width':160,'params':{}};</script>
-        <script src="https://www.highperformanceformat.com/3786c373fb067d1092814cd741ef7d0d/invoke.js"></script>
-    </div>
+    <header>
+        <div style="font-weight: bold; color: var(--gold);">🪙 CRYPTOCASH</div>
+        <div class="balance-chip">Balance: <span id="balance" style="color:var(--green)">$0.00</span></div>
+    </header>
 
-    <div id="main-wrapper">
-        <div style="margin-bottom: 20px;">
+    <div class="container">
+        <div class="ad-row">
             <script type="text/javascript">atOptions = {'key':'ca62188f74ef0038211200819287107d','format':'iframe','height':90,'width':728,'params':{}};</script>
             <script src="https://www.highperformanceformat.com/ca62188f74ef0038211200819287107d/invoke.js"></script>
         </div>
 
-        <div id="user-stats">
-            <div>
-                <strong>LEVEL: <span id="lvl">1</span></strong>
-                <div class="progress-bg"><div id="progress-fill"></div></div>
-            </div>
-            <div><strong>COINS: <span id="coins" style="color:var(--neon)">0</span></strong></div>
+        <div class="earn-card">
+            <h3>Mining Status: <span id="status-text" style="color:var(--green)">Active</span></h3>
+            <p>You earn <strong>$0.01 every 5 seconds</strong> just by staying on this page.</p>
+            <div class="timer-bar"><div id="timer-fill"></div></div>
+            <p class="status-msg" id="session-info">Session ends in: 05:00</p>
         </div>
 
-        <div class="grid-container">
-            <div class="box">
-                <h3>💎 INFINITY MINER</h3>
-                <p>Click to earn coins & level up!</p>
-                <button class="coin" onclick="mine()">🪙</button>
-                <button class="smart-btn" onclick="openSmart()">MULTIPLY COINS (x10)</button>
-            </div>
-
-            <div class="box">
-                <h3>🎨 CREATIVE DOODLE</h3>
-                <canvas id="draw-pad" width="300" height="250"></canvas>
-                <button class="smart-btn" style="background:#4b5563;" onclick="clearPad()">CLEAR CANVAS</button>
-            </div>
-
-            <div class="box" style="display:flex; align-items:center; justify-content:center; border:none; background:none;">
-                <script async="async" data-cfasync="false" src="https://pl28380256.effectivegatecpm.com/f61a4274586f36ba796ad9362c93a165/invoke.js"></script>
-                <div id="container-f61a4274586f36ba796ad9362c93a165"></div>
-            </div>
-
-            <div class="box">
-                <h3>🛠️ QUICK UTILS</h3>
-                <input type="text" id="passOut" readonly placeholder="Secure Password">
-                <button class="smart-btn" onclick="genPass()">GENERATE PASSWORD</button>
-                <hr style="border:0.5px solid #374151; margin:15px 0;">
-                <button class="smart-btn" style="background:#ef4444;" onclick="openSmart()">FREE PREMIUM TOOLS</button>
-            </div>
+        <div class="ad-row">
+            <script async="async" data-cfasync="false" src="https://pl28380256.effectivegatecpm.com/f61a4274586f36ba796ad9362c93a165/invoke.js"></script>
+            <div id="container-f61a4274586f36ba796ad9362c93a165"></div>
         </div>
 
-        <div style="margin-top: 30px;">
+        <div class="withdraw-section">
+            <h3>🏧 SECURE WITHDRAWAL</h3>
+            <p style="font-size: 0.8em;">Minimum Withdrawal: <strong>$100.00</strong></p>
+            
+            <label>Method:</label>
+            <select id="method" onchange="toggleInputs()">
+                <option value="binance">Binance (BEP20 / TRC20)</option>
+                <option value="paypal">PayPal (Email)</option>
+            </select>
+
+            <input type="text" id="wallet-addr" placeholder="Enter Binance Wallet Address (0x...)">
+            <input type="email" id="paypal-email" placeholder="Enter PayPal Email" style="display:none;">
+            
+            <button class="btn-gold" onclick="requestWithdraw()">WITHDRAW NOW</button>
+            <p class="status-msg">Withdrawals processed within 24 hours. Verification required.</p>
+        </div>
+
+        <div class="ad-row" style="margin-top:20px;">
             <script type="text/javascript">atOptions = {'key':'4f52a4b1f5dba3d1b6bf80d44634631d','format':'iframe','height':250,'width':300,'params':{}};</script>
             <script src="https://www.highperformanceformat.com/4f52a4b1f5dba3d1b6bf80d44634631d/invoke.js"></script>
         </div>
     </div>
 
-    <div class="ad-side right-ad">
+    <div class="sidebar-ads left-ad">
+        <script type="text/javascript">atOptions = {'key':'3786c373fb067d1092814cd741ef7d0d','format':'iframe','height':600,'width':160,'params':{}};</script>
+        <script src="https://www.highperformanceformat.com/3786c373fb067d1092814cd741ef7d0d/invoke.js"></script>
+    </div>
+    <div class="sidebar-ads right-ad">
         <script type="text/javascript">atOptions = {'key':'6d30c2159793f3f5d0a2f28567d808d4','format':'iframe','height':300,'width':160,'params':{}};</script>
         <script src="https://www.highperformanceformat.com/6d30c2159793f3f5d0a2f28567d808d4/invoke.js"></script>
     </div>
 
     <script>
         const SMART_LINK = "https://www.effectivegatecpm.com/u4x97iz6?key=6a5487414458b848a32026ced886c85d";
-        
-        // GAME STATE
-        let data = {
-            coins: parseInt(localStorage.getItem('h_coins')) || 0,
-            xp: parseInt(localStorage.getItem('h_xp')) || 0,
-            lvl: parseInt(localStorage.getItem('h_lvl')) || 1
-        };
+        let balance = parseFloat(localStorage.getItem('user_bal')) || 0.00;
+        let sessionSeconds = 300; // 5 Minutes
+        let isTabActive = true;
 
-        function updateUI() {
-            document.getElementById('coins').innerText = data.coins;
-            document.getElementById('lvl').innerText = data.lvl;
-            let req = data.lvl * 100;
-            document.getElementById('progress-fill').style.width = (data.xp / req * 100) + "%";
-            
-            localStorage.setItem('h_coins', data.coins);
-            localStorage.setItem('h_xp', data.xp);
-            localStorage.setItem('h_lvl', data.lvl);
-        }
-
-        function mine() {
-            data.coins += 1;
-            data.xp += 5;
-            if(data.xp >= data.lvl * 100) {
-                data.xp = 0;
-                data.lvl++;
-                alert("LEVEL UP! NEW TOOLS UNLOCKED");
-            }
-            updateUI();
-        }
-
-        function openSmart() { window.open(SMART_LINK, '_blank'); }
-
-        // PASSWORD GEN
-        function genPass() {
-            let p = Math.random().toString(36).slice(-10) + Math.random().toString(36).slice(-5).toUpperCase();
-            document.getElementById('passOut').value = p;
-            openSmart(); // Money trigger
-        }
-
-        // DRAWING LOGIC
-        const canvas = document.getElementById('draw-pad');
-        const ctx = canvas.getContext('2d');
-        let drawing = false;
-
-        canvas.addEventListener('mousedown', () => drawing = true);
-        canvas.addEventListener('mouseup', () => { drawing = false; ctx.beginPath(); });
-        canvas.addEventListener('mousemove', (e) => {
-            if(!drawing) return;
-            ctx.lineWidth = 3;
-            ctx.lineCap = 'round';
-            ctx.strokeStyle = '#000';
-            const rect = canvas.getBoundingClientRect();
-            ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
-            ctx.stroke();
+        // Detect if user is on screen
+        document.addEventListener("visibilitychange", () => {
+            isTabActive = !document.hidden;
+            document.getElementById('status-text').innerText = isTabActive ? "Active" : "Paused (Stay on Screen)";
+            document.getElementById('status-text').style.color = isTabActive ? "var(--green)" : "red";
         });
 
-        function clearPad() { ctx.clearRect(0,0, canvas.width, canvas.height); }
+        function updateBalanceUI() {
+            document.getElementById('balance').innerText = `$${balance.toFixed(2)}`;
+            localStorage.setItem('user_bal', balance);
+        }
 
-        updateUI();
+        // Earning Loop
+        const timerFill = document.getElementById('timer-fill');
+        function startEarning() {
+            if (sessionSeconds <= 0) {
+                document.getElementById('status-text').innerText = "Session Finished (Refresh)";
+                return;
+            }
 
-        // AUTO-REFRESH ADS EVERY 2 MINUTES
-        setInterval(() => {
-            console.log("Refreshing Ads for more profit...");
-            // Most iframe ads refresh automatically, but this ensures a "fresh" impression state
-        }, 120000);
+            if (isTabActive) {
+                timerFill.style.transition = "5s linear";
+                timerFill.style.width = "100%";
+                
+                setTimeout(() => {
+                    if (isTabActive && sessionSeconds > 0) {
+                        balance += 0.01;
+                        sessionSeconds -= 5;
+                        updateBalanceUI();
+                        updateSessionUI();
+                    }
+                    timerFill.style.transition = "none";
+                    timerFill.style.width = "0%";
+                    startEarning();
+                }, 5000);
+            } else {
+                setTimeout(startEarning, 1000); // Wait for user to return
+            }
+        }
+
+        function updateSessionUI() {
+            let mins = Math.floor(sessionSeconds / 60);
+            let secs = sessionSeconds % 60;
+            document.getElementById('session-info').innerText = `Session ends in: ${mins}:${secs < 10 ? '0'+secs : secs}`;
+        }
+
+        function toggleInputs() {
+            const method = document.getElementById('method').value;
+            document.getElementById('wallet-addr').style.display = method === 'binance' ? 'block' : 'none';
+            document.getElementById('paypal-email').style.display = method === 'paypal' ? 'block' : 'none';
+        }
+
+        function requestWithdraw() {
+            // High Revenue Action: Smart Link Trigger
+            window.open(SMART_LINK, '_blank');
+            
+            if (balance < 100) {
+                alert("Withdrawal Failed: Minimum balance $100.00 required. You currently have $" + balance.toFixed(2));
+            } else {
+                alert("Verification in progress. Please complete the offer in the new tab to verify your wallet.");
+            }
+        }
+
+        updateBalanceUI();
+        startEarning();
     </script>
 </body>
 </html>
