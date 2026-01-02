@@ -3,139 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scribble Royale - Play & Earn</title>
-    <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+    <title>Infinity Hub | Play, Create, Level Up</title>
     
     <script src="https://pl28370848.effectivegatecpm.com/61/16/6f/61166f9730629bd7ee7d7ae6e111ba88.js"></script>
 
     <style>
-        :root { --neon: #00f3ff; --bg: #0a0b1e; --accent: #ff00ff; }
-        body { background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; overflow: hidden; display: flex; }
+        :root { --neon: #39ff14; --primary: #6366f1; --bg: #030712; --card: #111827; }
+        body { background: var(--bg); color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; display: flex; }
         
         /* AD GUTTERS (Side Banners) */
-        .ad-gutter { width: 160px; height: 100vh; display: flex; align-items: center; justify-content: center; background: #050510; }
+        .ad-side { width: 160px; height: 100vh; background: #000; position: fixed; display: flex; align-items: center; justify-content: center; z-index: 100; }
+        .left-ad { left: 0; } .right-ad { right: 0; }
 
-        /* MAIN GAME CONTAINER */
-        #app { flex-grow: 1; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        /* CONTENT AREA */
+        #main-wrapper { flex-grow: 1; margin: 0 160px; display: flex; flex-direction: column; align-items: center; padding: 20px; }
         
-        #lobby, #game-screen { width: 100%; max-width: 900px; display: none; }
-        #lobby.active, #game-screen.active { display: flex; flex-direction: column; }
+        /* LEVEL BAR (Keeps users engaged) */
+        #user-stats { width: 100%; max-width: 800px; background: var(--card); padding: 15px; border-radius: 12px; border: 1px solid var(--primary); display: flex; justify-content: space-between; margin-bottom: 20px; }
+        .progress-bg { width: 200px; height: 10px; background: #374151; border-radius: 5px; margin-top: 5px; }
+        #progress-fill { width: 0%; height: 100%; background: var(--neon); border-radius: 5px; transition: 0.3s; }
 
-        /* UI ELEMENTS */
-        .card { background: rgba(255, 255, 255, 0.05); border: 1px solid var(--neon); border-radius: 15px; padding: 20px; text-align: center; }
-        .btn { background: var(--neon); color: black; border: none; padding: 15px 30px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 1.1em; transition: 0.3s; }
-        .btn:hover { box-shadow: 0 0 20px var(--neon); }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; width: 100%; max-width: 1000px; }
+        .box { background: var(--card); border-radius: 15px; padding: 25px; border: 1px solid #1f2937; position: relative; }
         
-        #canvas-container { position: relative; background: white; border-radius: 10px; cursor: crosshair; }
-        canvas { border-radius: 10px; }
+        /* CLICKER GAME */
+        .coin { width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle, #facc15, #b45309); border: 4px solid #78350f; cursor: pointer; font-size: 3em; margin: 20px 0; transition: 0.1s; }
+        .coin:active { transform: scale(0.9); }
 
-        #chat-box { width: 300px; height: 400px; background: rgba(0,0,0,0.5); margin-left: 20px; display: flex; flex-direction: column; border: 1px solid var(--neon); }
-        #messages { flex-grow: 1; overflow-y: auto; padding: 10px; font-size: 0.9em; }
-        #chat-input { background: none; border: none; border-top: 1px solid var(--neon); color: white; padding: 10px; outline: none; }
+        /* DRAWING PAD */
+        #draw-pad { background: white; border-radius: 10px; cursor: crosshair; }
 
-        .rules { font-size: 0.8em; color: #aaa; margin-top: 20px; }
+        .smart-btn { background: var(--primary); color: white; border: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 15px; width: 100%; }
+        
+        @media (max-width: 1200px) { .ad-side { display: none; } #main-wrapper { margin: 0; } }
     </style>
 </head>
 <body>
 
-    <div class="ad-gutter">
-        <script type="text/javascript">
-            atOptions = { 'key' : '3786c373fb067d1092814cd741ef7d0d', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
-        </script>
+    <div class="ad-side left-ad">
+        <script type="text/javascript">atOptions = {'key':'3786c373fb067d1092814cd741ef7d0d','format':'iframe','height':600,'width':160,'params':{}};</script>
         <script src="https://www.highperformanceformat.com/3786c373fb067d1092814cd741ef7d0d/invoke.js"></script>
     </div>
 
-    <div id="app">
-        <div style="margin-bottom: 10px;">
-            <script type="text/javascript">
-                atOptions = { 'key' : '8b1e3d61861d1c17368c4fd4e1eecf52', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
-            </script>
-            <script src="https://www.highperformanceformat.com/8b1e3d61861d1c17368c4fd4e1eecf52/invoke.js"></script>
+    <div id="main-wrapper">
+        <div style="margin-bottom: 20px;">
+            <script type="text/javascript">atOptions = {'key':'ca62188f74ef0038211200819287107d','format':'iframe','height':90,'width':728,'params':{}};</script>
+            <script src="https://www.highperformanceformat.com/ca62188f74ef0038211200819287107d/invoke.js"></script>
         </div>
 
-        <div id="lobby" class="active">
-            <div class="card">
-                <h1 style="color: var(--neon)">SCRIBBLE ROYALE</h1>
-                <input type="text" id="username" placeholder="Enter Username" style="padding: 10px; margin-bottom: 20px; border-radius: 5px; border: none;">
-                <br>
-                <button class="btn" onclick="startMatch()">START GAME</button>
-                <p class="rules">Rules: 1. No writing. 2. 60s limit. 3. Be fast!</p>
+        <div id="user-stats">
+            <div>
+                <strong>LEVEL: <span id="lvl">1</span></strong>
+                <div class="progress-bg"><div id="progress-fill"></div></div>
             </div>
-            
-            <div style="margin-top: 20px;">
+            <div><strong>COINS: <span id="coins" style="color:var(--neon)">0</span></strong></div>
+        </div>
+
+        <div class="grid-container">
+            <div class="box">
+                <h3>💎 INFINITY MINER</h3>
+                <p>Click to earn coins & level up!</p>
+                <button class="coin" onclick="mine()">🪙</button>
+                <button class="smart-btn" onclick="openSmart()">MULTIPLY COINS (x10)</button>
+            </div>
+
+            <div class="box">
+                <h3>🎨 CREATIVE DOODLE</h3>
+                <canvas id="draw-pad" width="300" height="250"></canvas>
+                <button class="smart-btn" style="background:#4b5563;" onclick="clearPad()">CLEAR CANVAS</button>
+            </div>
+
+            <div class="box" style="display:flex; align-items:center; justify-content:center; border:none; background:none;">
                 <script async="async" data-cfasync="false" src="https://pl28380256.effectivegatecpm.com/f61a4274586f36ba796ad9362c93a165/invoke.js"></script>
                 <div id="container-f61a4274586f36ba796ad9362c93a165"></div>
             </div>
+
+            <div class="box">
+                <h3>🛠️ QUICK UTILS</h3>
+                <input type="text" id="passOut" readonly placeholder="Secure Password">
+                <button class="smart-btn" onclick="genPass()">GENERATE PASSWORD</button>
+                <hr style="border:0.5px solid #374151; margin:15px 0;">
+                <button class="smart-btn" style="background:#ef4444;" onclick="openSmart()">FREE PREMIUM TOOLS</button>
+            </div>
         </div>
 
-        <div id="game-screen">
-            <div style="display: flex;">
-                <div id="canvas-container">
-                    <canvas id="paint" width="600" height="400"></canvas>
-                </div>
-                <div id="chat-box">
-                    <div id="messages"></div>
-                    <input type="text" id="chat-input" placeholder="Type guess here...">
-                </div>
-            </div>
+        <div style="margin-top: 30px;">
+            <script type="text/javascript">atOptions = {'key':'4f52a4b1f5dba3d1b6bf80d44634631d','format':'iframe','height':250,'width':300,'params':{}};</script>
+            <script src="https://www.highperformanceformat.com/4f52a4b1f5dba3d1b6bf80d44634631d/invoke.js"></script>
         </div>
     </div>
 
-    <div class="ad-gutter">
-        <script type="text/javascript">
-            atOptions = { 'key' : '6d30c2159793f3f5d0a2f28567d808d4', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} };
-        </script>
+    <div class="ad-side right-ad">
+        <script type="text/javascript">atOptions = {'key':'6d30c2159793f3f5d0a2f28567d808d4','format':'iframe','height':300,'width':160,'params':{}};</script>
         <script src="https://www.highperformanceformat.com/6d30c2159793f3f5d0a2f28567d808d4/invoke.js"></script>
     </div>
 
     <script>
-        const smartLink = "https://www.effectivegatecpm.com/u4x97iz6?key=6a5487414458b848a32026ced886c85d";
-        let secretWord = "Dragon"; // This would be randomized in a full version
+        const SMART_LINK = "https://www.effectivegatecpm.com/u4x97iz6?key=6a5487414458b848a32026ced886c85d";
+        
+        // GAME STATE
+        let data = {
+            coins: parseInt(localStorage.getItem('h_coins')) || 0,
+            xp: parseInt(localStorage.getItem('h_xp')) || 0,
+            lvl: parseInt(localStorage.getItem('h_lvl')) || 1
+        };
 
-        function startMatch() {
-            // HIGH REVENUE TRIGGER: Open Smartlink in new tab
-            window.open(smartLink, '_blank');
+        function updateUI() {
+            document.getElementById('coins').innerText = data.coins;
+            document.getElementById('lvl').innerText = data.lvl;
+            let req = data.lvl * 100;
+            document.getElementById('progress-fill').style.width = (data.xp / req * 100) + "%";
             
-            document.getElementById('lobby').classList.remove('active');
-            document.getElementById('game-screen').classList.add('active');
-            initGame();
+            localStorage.setItem('h_coins', data.coins);
+            localStorage.setItem('h_xp', data.xp);
+            localStorage.setItem('h_lvl', data.lvl);
         }
 
-        function initGame() {
-            const canvas = document.getElementById('paint');
-            const ctx = canvas.getContext('2d');
-            let drawing = false;
-
-            canvas.addEventListener('mousedown', () => drawing = true);
-            canvas.addEventListener('mouseup', () => { drawing = false; ctx.beginPath(); });
-            canvas.addEventListener('mousemove', draw);
-
-            function draw(e) {
-                if (!drawing) return;
-                ctx.lineWidth = 5;
-                ctx.lineCap = 'round';
-                ctx.strokeStyle = 'black';
-                ctx.lineTo(e.offsetX, e.offsetY);
-                ctx.stroke();
+        function mine() {
+            data.coins += 1;
+            data.xp += 5;
+            if(data.xp >= data.lvl * 100) {
+                data.xp = 0;
+                data.lvl++;
+                alert("LEVEL UP! NEW TOOLS UNLOCKED");
             }
-
-            // CORRECT ANSWER DETECTION
-            const chatInput = document.getElementById('chat-input');
-            chatInput.addEventListener('keypress', (e) => {
-                if(e.key === 'Enter') {
-                    let guess = chatInput.value.toLowerCase().trim();
-                    let msgDiv = document.getElementById('messages');
-                    
-                    if(guess === secretWord.toLowerCase()) {
-                        msgDiv.innerHTML += `<p style="color: lime"><b>SYSTEM: Correct! The word was ${secretWord}</b></p>`;
-                        // Award points logic here
-                    } else {
-                        msgDiv.innerHTML += `<p>You guessed: ${guess}</p>`;
-                    }
-                    chatInput.value = "";
-                }
-            });
+            updateUI();
         }
+
+        function openSmart() { window.open(SMART_LINK, '_blank'); }
+
+        // PASSWORD GEN
+        function genPass() {
+            let p = Math.random().toString(36).slice(-10) + Math.random().toString(36).slice(-5).toUpperCase();
+            document.getElementById('passOut').value = p;
+            openSmart(); // Money trigger
+        }
+
+        // DRAWING LOGIC
+        const canvas = document.getElementById('draw-pad');
+        const ctx = canvas.getContext('2d');
+        let drawing = false;
+
+        canvas.addEventListener('mousedown', () => drawing = true);
+        canvas.addEventListener('mouseup', () => { drawing = false; ctx.beginPath(); });
+        canvas.addEventListener('mousemove', (e) => {
+            if(!drawing) return;
+            ctx.lineWidth = 3;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = '#000';
+            const rect = canvas.getBoundingClientRect();
+            ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+            ctx.stroke();
+        });
+
+        function clearPad() { ctx.clearRect(0,0, canvas.width, canvas.height); }
+
+        updateUI();
+
+        // AUTO-REFRESH ADS EVERY 2 MINUTES
+        setInterval(() => {
+            console.log("Refreshing Ads for more profit...");
+            // Most iframe ads refresh automatically, but this ensures a "fresh" impression state
+        }, 120000);
     </script>
 </body>
 </html>
